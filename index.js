@@ -1,13 +1,12 @@
 // start button eka click kala pasu input values tika ganna
 // index eka invivible karala game eka visible karanna
 // input anuwa game eka setup karnna
-
+let gamePoints=0;
 
 $('#start').click( ()=>{
     const numDigits=Number($('#digits').val());
     const operator= $('#operator').val();
     if(numDigits>0){
-        console.log('started');
         $('#index').addClass('notvisible');
         $('#game').removeClass('notvisible');
         gamePlay(operator,numDigits);
@@ -61,11 +60,15 @@ function gamePlay(operator,numDigits){
         $('#value1').text(value1);
         $('#value2').text(value2);
         const finalAnswer= answerCal(operator,value1,value2);
-        console.log(finalAnswer); 
+        $('#skip').click(()=>{
+            gamePlay(operator,numDigits);
+        });
         $('#check').click(()=>{
             const userAnswer= Number($('#useranswer').val());
             if(userAnswer==finalAnswer){
-                alert("you won");
+                $('#useranswer').val('');
+                gamePoints+=5;
+                alert("You won.!! You have "+ gamePoints+ " points");
                 gamePlay(operator,numDigits);
             }
         });
