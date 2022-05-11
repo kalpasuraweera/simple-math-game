@@ -10,19 +10,7 @@ $('#start').click( ()=>{
         console.log('started');
         $('#index').addClass('notvisible');
         $('#game').removeClass('notvisible');
-        $('#setop').text(operator);
-        const value1=newNum(numDigits);
-        const value2=newNum(numDigits);
-        $('#value1').text(value1);
-        $('#value2').text(value2);
-        const finalAnswer= answerCal(operator,value1,value2);
-        console.log(finalAnswer); 
-        $('#check').click(()=>{
-            const userAnswer= Number($('#useranswer').val());
-            if(userAnswer==finalAnswer){
-                alert("you won");
-            }
-        });
+        gamePlay(operator,numDigits);
         
         
     }
@@ -64,4 +52,21 @@ function answerCal(operator,value1,value2){
     return answer
 
 
+}
+
+function gamePlay(operator,numDigits){
+    $('#setop').text(operator);
+        const value1=newNum(numDigits);
+        const value2=newNum(numDigits);
+        $('#value1').text(value1);
+        $('#value2').text(value2);
+        const finalAnswer= answerCal(operator,value1,value2);
+        console.log(finalAnswer); 
+        $('#check').click(()=>{
+            const userAnswer= Number($('#useranswer').val());
+            if(userAnswer==finalAnswer){
+                alert("you won");
+                gamePlay(operator,numDigits);
+            }
+        });
 }
