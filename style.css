@@ -1,4 +1,4 @@
-/* index.html */
+/* index */
 
 .headtitle{
     text-align: center;
@@ -11,7 +11,13 @@
 
 
 
-/* game.html */
-.game{
+/* game */
+#game{
     text-align: right;
+}
+
+/* for processing use */
+
+.notvisible{
+    display: none;
 }
